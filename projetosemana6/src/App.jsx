@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react"; //ainda não usamos
 
-function App() {
-  const [count, setCount] = useState(0)
 
+//Páginas gerais.
+import Home from "./pages/Home";
+import Cadastro from "./pages/Cadastro";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+
+//Componentes
+import Menu from "./components/Menu";
+import Footer from "./components/Footer";
+
+//Páginas de administração da biblioteca.
+import NovoLivro from "./pages/NovoLivro"
+import EditarLivro from "./pages/EditarLivro";
+import Livros from "./pages/Livros";
+
+function App(){
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <BrowserRouter>
+    <Menu/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/cadastro" element={<Cadastro/>}/>
+      <Route path="/livros" element={<Livros/>}/>
+      <Route path="/livros/adicionar" element={<NovoLivro/>}/>
+      <Route path="/livros/editar/:id" element={<EditarLivro/>}/>
+      <Route path="*" element={<NotFound/>}/>
+    </Routes>
+    <Footer/>
+    <Toaster position="bottom-right"/>
+    </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
+
+//ainda não coloquei:
+// 1 -<UsuarioContext.Provider value={usuarioLogado}> e </UsuarioContext.Provider>
