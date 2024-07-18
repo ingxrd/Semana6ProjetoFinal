@@ -7,7 +7,7 @@ function NotFound(){
         <main>
             <h1>Oops! Parece que a página que você solicitou não existe.</h1>
             <Link to="/" className="mt-1 mx-auto d-block">
-        <Button variant="warning" >Voltar para o menu principal</Button>
+        <Button bg="light" variant="light" >Voltar para o menu principal</Button>
       </Link> 
 
         </main>
