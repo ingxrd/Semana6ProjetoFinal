@@ -1,0 +1,30 @@
+.footer-container {
+  background-color: #f0f0f0;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.footer-brand {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.footer-link {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.footer-link a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
