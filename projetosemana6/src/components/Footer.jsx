@@ -18,9 +18,9 @@ function Footer() {
               alt="Logo"
             />
           </Link>
-          <div className="d-flex flex-column align-items-center text-center">
+        
             <Navbar.Brand className="footer-brand">&copy; 2024 - 2025 Todos os direitos reservados</Navbar.Brand>
-          </div>
+        
           <Nav className="ml-auto">
             <Nav.Link as={Link} to="/privacidade" className="footer-link">Política de Privacidade</Nav.Link>
           </Nav>

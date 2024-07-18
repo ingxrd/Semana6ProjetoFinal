@@ -45,4 +45,4 @@ function App(){
 export default App;
 
 //ainda não coloquei:
-// 1 -<UsuarioContext.Provider value={usuarioLogado}> e </UsuarioContext.Provider>
+// 1 -<UsuarioContext.Provider value={usuari
