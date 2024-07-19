@@ -1,1 +1,35 @@
-@import "bootstrap/dist/css/bootstrap.min.css"; 
+/* Estilos globais */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.form-section {
+    width: 320px;
+    margin: 16px auto;
+}
+
+.invalid {
+    color: red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #efefef;
+    font-family: monospace;
+}
+
+img {
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+main {
+    min-height: calc(100vh - 112px);
+}
