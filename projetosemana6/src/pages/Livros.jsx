@@ -19,10 +19,10 @@ function Livros() {
 
   return (
     <main>
-      <Container className="mt-5">
+      <Container className="mt-5 cont">
         <h1>Meus Livros</h1>
         <hr />
-        <Link className="btn btn-dark mb-3" to="/livros/adicionar">
+        <Link className="btn btn-dark mb-3 but" to="/livros/adicionar">
           Adicionar Novo Livro
         </Link>
         {livros ? (
