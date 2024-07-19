@@ -20,7 +20,7 @@ function Livros() {
   function statusLivros(livro){
       if (livro.concluido || livro.dataConclusao){
         return <Badge bg="success">Leitura Concluída</Badge>;
-      } else if (!livro.concluido && livro.andamento){
+      } else if (livro.dataInicio || livro.andamento){
         return <Badge bg="dark">Leitura em Andamento</Badge>;
       } else if (!livro.concluido && !livro.andamento){
         return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
