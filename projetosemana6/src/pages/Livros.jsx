@@ -16,6 +16,7 @@ function Livros() {
   useEffect(() => {
     carregarDados();
   }, []);
+  
 
   return (
     <main>
@@ -46,11 +47,8 @@ function Livros() {
                         </Card.Text>
                       )}
                       <div className="mb-2">
-                        {livro.concluido ? (
-                          <Badge bg="success">Leitura Concluída</Badge>
-                        ) : (
-                          <Badge bg="dark">Leitura em Andamento</Badge>
-                        )}
+                        
+                        <Badge>{statusLivros}</Badge>
                       </div>
                       <Button variant="primary" className="me-2">
                         Editar

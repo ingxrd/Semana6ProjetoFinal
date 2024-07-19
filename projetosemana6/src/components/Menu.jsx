@@ -42,7 +42,7 @@ function Menu() {
               {usuario && <span className=''>Olá, {usuario.displayName}</span>}
               {!usuario && <Nav.Link as={Link} to="/login">📚 Entrar</Nav.Link>}
               {!usuario && <Nav.Link as={Link} to="/cadastro">✍🏻 Cadastro</Nav.Link>}
-              {usuario && <Nav.Link as={Link} to="/livros"> 📕Livros</Nav.Link>}
+              {usuario && <Nav.Link as={Link} to="/livros"> 📕 Livros</Nav.Link>}
               <Nav.Link as={Link} to="/ajuda">❓ Ajuda</Nav.Link>
               {usuario && <Button variant = "dark" onClick={handlelogOut}>🔚 Sair</Button>}
             </Nav>
