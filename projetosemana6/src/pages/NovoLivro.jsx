@@ -71,7 +71,7 @@ function NovoLivro(){
             type="date"
             id="dataInicio"
             className="form-control text-center"
-            {...register("dataInicio", {required: true})}
+            {...register("dataInicio")}
           />
         </div>
         

@@ -26,7 +26,7 @@ function Login() {
     function handleEntrarGoogle() {
         entrarGoogle().then(() => {
             toast.success("Bem vindo!")
-            navigate("/home");
+            navigate("/livros");
 
         })
     }
