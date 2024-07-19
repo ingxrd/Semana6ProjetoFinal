@@ -25,7 +25,7 @@ function Menu() {
             <Nav className="botoes">
               <Nav.Link as={Link} to="/login">Entrar</Nav.Link>
               <Nav.Link as={Link} to="/cadastro">Cadastro</Nav.Link>
-              <Nav.Link as={Link} to="/Livros">Livros</Nav.Link>
+              <Nav.Link as={Link} to="/livros">Livros</Nav.Link>
               <Nav.Link as={Link} to="/ajuda">Ajuda</Nav.Link>
             </Nav>
           </Navbar.Collapse>
