@@ -50,9 +50,11 @@ function Home() {
                     {slides.map((slide, idx) => (
                         <div key={idx} className={`carousel-item ${idx === index ? 'active' : ''}`}>
                             <img className="d-block w-100" src={slide.imagem} alt={`Slide ${idx + 1}`} />
+                            
                             <div className="carousel-caption d-none d-md-block">
-                                <h5>{slide.titulo}</h5>
+                                <h5 className="tit-home">{slide.titulo}</h5>
                             </div>
+                            
                         </div>
                     ))}
                 </div>
