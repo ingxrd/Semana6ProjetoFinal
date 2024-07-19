@@ -17,6 +17,7 @@ function Login() {
         loginUsuario(data.email, data.senha).then(() => {
             toast.success("Bem vindo!")
             navigate("/livros")
+            navigate("/")
         }).catch(() => {
             toast.error("Email ou senha incorretos.")
         })
@@ -56,6 +57,7 @@ function Login() {
                         {...register("senha", {
                             required: "Campo obirgatório",
                             minLength: { value: 6, message: "" },
+                            minLength: { value: 6, message: "Mínimo de 6 caracteres." },
                         })}
                     />
                     {errors.senha && (

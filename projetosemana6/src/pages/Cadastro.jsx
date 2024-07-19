@@ -14,6 +14,7 @@ function Cadastro() {
         cadastrarUsuario(data.nome, data.email, data.senha).then(() => {
             toast.success(`Olá ${data.nome}, você está logado!`);
             navigate("/livros");
+            navigate("/");
         }).catch((error) => {
             toast.error("Um erro aconteceu:" + error.code)
         });
@@ -22,6 +23,7 @@ function Cadastro() {
         entrarGoogle().then(() => {
             toast.success("Bem vindo!");
             navigate("/livros");
+            navigate("/");
         });
     }
 
