@@ -13,6 +13,7 @@ function Cadastro() {
     function cadastrar(data) {
         cadastrarUsuario(data.nome, data.email, data.senha).then(() => {
             toast.success(`Olá ${data.nome}, você está logado!`);
+            navigate("/livros");
             navigate("/");
         }).catch((error) => {
             toast.error("Um erro aconteceu:" + error.code)
@@ -21,12 +22,13 @@ function Cadastro() {
     function handleEntrarGoogle() {
         entrarGoogle().then(() => {
             toast.success("Bem vindo!");
+            navigate("/livros");
             navigate("/");
         });
     }
 
     return (
-        <main className="main" style={{ backgroundImage: `url("fundo.jpg")` }} >
+        <main className="main d-flex" style={{ backgroundImage: `url("fundo.jpg")` }} >
             <form className=" container mt-5 text-center form-area form-section" onSubmit={handleSubmit(cadastrar)}>
                 <h1>Cadastro</h1>
                 <hr />

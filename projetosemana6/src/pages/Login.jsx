@@ -16,6 +16,7 @@ function Login() {
         // data é um objeto com os dados do formulário
         loginUsuario(data.email, data.senha).then(() => {
             toast.success("Bem vindo!")
+            navigate("/livros")
             navigate("/")
         }).catch(() => {
             toast.error("Email ou senha incorretos.")
@@ -55,6 +56,7 @@ function Login() {
                         className="form-control"
                         {...register("senha", {
                             required: "Campo obirgatório",
+                            minLength: { value: 6, message: "" },
                             minLength: { value: 6, message: "Mínimo de 6 caracteres." },
                         })}
                     />
