@@ -32,8 +32,8 @@ h1 {
 
 main {
     min-height: calc(100vh - 112px);
-=======
-@import "bootstrap/dist/css/bootstrap.min.css";
+
+}
 
 body{
     box-sizing: border-box;
@@ -47,6 +47,7 @@ form{
     width: 100%;
     background-size: cover;
     background-position: 2%;
+    
     
 }
 .btn-area{
