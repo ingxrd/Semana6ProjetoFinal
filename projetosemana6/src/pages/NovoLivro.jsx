@@ -97,6 +97,18 @@ function NovoLivro(){
           </label>
         </div>
         
+        <div className="form-check">
+          <input
+            type="checkbox"
+            id="andamento"
+            className="form-check-input"
+            {...register("andamento")}
+          />
+          <label htmlFor="concluido" className="form-check-label">
+            Em andamento
+          </label>
+        </div>
+        
         <div>
           <label htmlFor="comentários">Comentários</label>
           <textarea
