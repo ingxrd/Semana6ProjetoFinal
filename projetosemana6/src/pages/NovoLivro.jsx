@@ -25,7 +25,7 @@ function NovoLivro(){
 
     return(
         
-    <main>
+    <main className="d-flex text-center">
       <form className="form-section" onSubmit={handleSubmit(salvarLivro)}>
         <h1>Novo Livro 📖</h1>
         <hr />
@@ -66,11 +66,11 @@ function NovoLivro(){
         </div>
         
         <div>
-          <label htmlFor="data">Data de Início</label>
+          <label htmlFor="data" >Data de Início</label>
           <input
             type="date"
             id="dataInicio"
-            className="form-control"
+            className="form-control text-center"
             {...register("dataInicio", {required: true})}
           />
         </div>
@@ -80,7 +80,7 @@ function NovoLivro(){
           <input
             type="date"
             id="dataConclusao"
-            className="form-control"
+            className="form-control text-center"
             {...register("dataConclusao")}
           />
         </div>
@@ -93,7 +93,7 @@ function NovoLivro(){
             {...register("concluido")}
           />
           <label htmlFor="concluido" className="form-check-label">
-            Concluído?
+            Concluído
           </label>
         </div>
         
