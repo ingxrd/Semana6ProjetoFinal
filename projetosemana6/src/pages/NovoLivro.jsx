@@ -71,7 +71,7 @@ function NovoLivro(){
             type="date"
             id="dataInicio"
             className="form-control text-center"
-            {...register("dataInicio", {required: true})}
+            {...register("dataInicio")}
           />
         </div>
         
@@ -94,6 +94,18 @@ function NovoLivro(){
           />
           <label htmlFor="concluido" className="form-check-label">
             Concluído
+          </label>
+        </div>
+        
+        <div className="form-check">
+          <input
+            type="checkbox"
+            id="andamento"
+            className="form-check-input"
+            {...register("andamento")}
+          />
+          <label htmlFor="concluido" className="form-check-label">
+            Em andamento
           </label>
         </div>
         

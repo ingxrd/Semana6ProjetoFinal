@@ -44,12 +44,23 @@ function Livros() {
     return <Navigate to="/login"/>
   }
 
+  function statusLivros(livro){
+      if (livro.concluido || livro.dataConclusao){
+        return <Badge bg="success">Leitura Concluída</Badge>;
+      } else if (livro.dataInicio || livro.andamento){
+        return <Badge bg="dark">Leitura em Andamento</Badge>;
+      } else if (!livro.concluido && !livro.andamento){
+        return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
+      }
+  }
+
+
   return (
     <main>
-      <Container className="mt-5">
+      <Container className="mt-5 cont">
         <h1>Meus Livros</h1>
         <hr />
-        <Link className="btn btn-dark mb-3" to="/livros/adicionar">
+        <Link className="btn btn-dark mb-3 but" to="/livros/adicionar">
           Adicionar Novo Livro
         </Link>
         {livros ? (
@@ -60,8 +71,8 @@ function Livros() {
                   <Card>
                     <Card.Body>
                       <Card.Title>{livro.titulo}</Card.Title>
-                      <Card.Text>{livro.autor}</Card.Text>
-                      <Card.Text>{livro.genero}</Card.Text>
+                      <Card.Text>Autor: {livro.autor}</Card.Text>
+                      <Card.Text>Gênero: {livro.genero}</Card.Text>
                       {livro.dataInicio && (
                         <Card.Text>
                           Data de Início: {livro.dataInicio}
@@ -73,11 +84,7 @@ function Livros() {
                         </Card.Text>
                       )}
                       <div className="mb-2">
-                        {livro.concluido ? (
-                          <Badge bg="success">Leitura Concluída</Badge>
-                        ) : (
-                          <Badge bg="dark">Leitura em Andamento</Badge>
-                        )}
+                        {statusLivros(livro)}
                       </div>
                       <Button variant="primary" className="me-2" onClick={() => navigate(`/livros/editar/${livro.id}`)}>
                         Editar
