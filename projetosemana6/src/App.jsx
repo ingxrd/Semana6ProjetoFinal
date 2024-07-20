@@ -65,6 +65,3 @@ function App(){
 }
 
 export default App;
-
-//ainda não coloquei:
-// 1 -<UsuarioContext.Provider value={usuari

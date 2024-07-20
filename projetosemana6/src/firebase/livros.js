@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs} from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "./config";
 
 
@@ -19,3 +19,26 @@ export async function getLivros() {
     });
     return livros;
 }
+
+export async function deleteLivro(id) {
+    // Cria uma referência para um documento da coleção
+    const livroDoc = doc(livrosRef, id);
+    // Deletar o documento da coleção de acordo com o id
+    await deleteDoc(livroDoc);
+  }
+  
+  export async function getLivro(id) {
+    // Cria uma referência para um documento específico da coleção
+    const livroDoc = doc(livrosRef, id);
+    // Trazer as informações do documento
+    const snapshot = await getDoc(livroDoc);
+  
+    // Retorna os dados dentro do documento
+    // {titulo: '', descricao: '', ...}
+    return snapshot.data();
+  }
+  
+  export async function updateLivro(id, data) {
+    const livroDoc = doc(livrosRef, id);
+    await updateDoc(livroDoc, data)
+  }
