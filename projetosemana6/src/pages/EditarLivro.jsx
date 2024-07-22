@@ -39,6 +39,13 @@ function EditarLivro() {
       navigate("/livros");
     });
   }
+  useEffect(() => {
+    carregarDados();
+  }, []);
+  
+  if(usuario === null) {
+    return <Navigate to="/login"/>
+  }
   
   return(
     <main className="d-flex text-center">
