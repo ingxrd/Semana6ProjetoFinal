@@ -7,8 +7,6 @@ export const livrosRef = collection(db, "livros");
 
 export async function novoLivro(data) { 
     await addDoc(livrosRef, data);
-    
-    console.log(data)
 }
 
 export async function getLivros() { 
@@ -19,6 +17,8 @@ export async function getLivros() {
         livros.push({...doc.data(), id: doc.id})
     });
     return livros;
+
+
 }
 
 export async function deleteLivro(id) {

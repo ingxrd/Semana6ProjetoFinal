@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -10,11 +10,11 @@ import { novoLivro } from '../firebase/livros';
 function NovoLivro() {
   const [imgURL, setImgURL] = useState(null);
   const [progresspercent, setProgresspercent] = useState(0);
-  const [avaliado, setAvaliado] = useState(false)
 
-  const { register, handleSubmit ,formState: { errors }, setValue } = useForm();
+
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
   const navigate = useNavigate();
- 
+
   const handleEnviar = (data) => {
     const file = data.capa[0];
     console.log(file)
@@ -34,12 +34,17 @@ function NovoLivro() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImgURL(downloadURL)
-          novoLivro()
+          data.capa = downloadURL
+          novoLivro(data).then(() => {
+            toast.success("Livro Adicionado com sucesso!");
+            navigate("/livros");
+          });
         });
       }
     );
   }
-  
+
+
 
   return (
     <main className="d-flex text-center">
@@ -54,8 +59,8 @@ function NovoLivro() {
             id="capa"
             {...register("capa")}
           />
-          
-          {imgURL && <img src={imgURL} alt="Imagem" width="150"/>}
+
+          {imgURL && <img src={imgURL} alt="Imagem" width="150" />}
         </div>
 
         <div>
@@ -139,7 +144,11 @@ function NovoLivro() {
             {...register("descricao")}
           />
         </div>
-      
+        <div>
+          <label>Marcar como Favorito</label>
+
+        </div>
+
         <Button variant="dark" className="w-100 mt-1" type="submit">
           Salvar Livro
         </Button>

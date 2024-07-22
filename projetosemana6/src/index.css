@@ -75,7 +75,32 @@ form{
 .card-livro{
     width:240px;
     flex-wrap: wrap;
+    text-align: center;
 }
 .link-login{
     text-decoration: none;
+}
+.aval{
+    background-color: transparent;
+    border-color: transparent;
+
+}
+.naval{
+    background-color: transparent;
+    border-color: transparent;
+
+}
+.capa-livro{
+    width: 180px;
+}
+.btnnn:hover{
+    background-color: transparent;
+}
+.naval:hover{
+    background-color: transparent;
+    border-color:transparent;
+}
+.aval:hover{
+    background-color: transparent;
+    border-color: transparent;
 }
