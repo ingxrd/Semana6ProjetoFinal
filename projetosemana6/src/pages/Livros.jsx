@@ -1,4 +1,4 @@
-import { Card, Container, Badge, Button, Row, Col } from "react-bootstrap";
+import { Card, Container, Badge, Button, Row, Col, CardImg } from "react-bootstrap";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { getLivros, deleteLivro } from "../firebase/livros";
 import { useState, useEffect } from "react";
@@ -11,7 +11,6 @@ function Livros() {
   const [livros, setLivros] = useState(null);
   //criando função para carregar dados do banco
   const usuario = useContext(UsuarioContext);
-
   function carregarDados() {
     getLivros().then((resultados) => {
       setLivros(resultados);
@@ -40,22 +39,22 @@ function Livros() {
     carregarDados();
   }, []);
 
-  if(usuario === null) {
-    return <Navigate to="/login"/>
+  if (usuario === null) {
+    return <Navigate to="/login" />
   }
 
-  function statusLivros(livro){
-      if (livro.concluido || livro.dataConclusao){
-        return <Badge bg="success">Leitura Concluída</Badge>;
-      } else if (livro.dataInicio || livro.andamento){
-        return <Badge bg="dark">Leitura em Andamento</Badge>;
-      } else if (!livro.concluido && !livro.andamento){
-        return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
-      }
+  function statusLivros(livro) {
+    if (livro.concluido || livro.dataConclusao) {
+      return <Badge bg="success">Leitura Concluída</Badge>;
+    } else if (livro.dataInicio || livro.andamento) {
+      return <Badge bg="dark">Leitura em Andamento</Badge>;
+    } else if (!livro.concluido && !livro.andamento) {
+      return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
+    }
   }
-    if (usuario === null) {
-      // Navegar para /login
-     return <Navigate to="/login" />;
+  if (usuario === null) {
+    // Navegar para /login
+    return <Navigate to="/login" />;
   }
 
 
@@ -75,6 +74,7 @@ function Livros() {
                   <Card className="card-livro">
                     <Card.Body>
                       <Card.Title>{livro.titulo}</Card.Title>
+                      <img src={livro.capa} className="capa-livro"></img>
                       <Card.Text>Autor: {livro.autor}</Card.Text>
                       <Card.Text>Gênero: {livro.genero}</Card.Text>
                       {livro.dataInicio && (

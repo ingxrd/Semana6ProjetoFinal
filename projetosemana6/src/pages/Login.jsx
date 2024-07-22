@@ -35,8 +35,9 @@ function Login() {
     }
 
     return (
-        <main>
-            <form className=" container mt-5 text-center form-area form-section" onSubmit={handleSubmit(entrar)}>
+        <main className="main d-flex align-items-center">
+            <Container className="form-container ">
+            <Form className=" form-area" onSubmit={handleSubmit(entrar)}>
                 <h1>Login</h1>
                 <hr />
                 <div>
@@ -51,6 +52,7 @@ function Login() {
                         <strong className="invalid">{errors.email.message}</strong>
                     )}
                 </div>
+                
                 <div>
                     <label htmlFor="senha">Senha</label>
                     <input
@@ -67,24 +69,24 @@ function Login() {
                         <strong className="invalid">{errors.senha.message}</strong>
                     )}
                 </div >
-                <div className="container d-flex flex-column btn-area" fluid>
-                    <Button variant="dark" className="mt-5  " type="submit">
+                    <Button variant="dark"  type="submit">
                         Entrar
                     </Button>
                     <Button
                         variant="warning"
-                        className="mt-1 w-100"
                         type="button"
                         onClick={handleEntrarGoogle}>
 
                         Entrar com o Google
                     </Button>
-                    <Button className= "btn"variant= "danger" href="/login/esqueci">Esqueci a senha </Button>
+                    <a href="/login/esqueci" className="mt-1 link-login">Esqueci a senha</a>
                     
-                </div>
-            </form>
+                
+                
+            </Form>
+            </Container>
         </main>
-    );
+    )
 }
 
 export default Login;
