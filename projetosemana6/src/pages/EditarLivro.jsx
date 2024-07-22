@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
-import { useEffect } from 'react';
 import { useContext } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { getLivro, updateLivro } from "../firebase/livros";
@@ -37,7 +36,6 @@ function EditarLivro() {
   }
   
   return(
-        
         <main className="d-flex text-center">
           <form className="form-section" onSubmit={handleSubmit(handleFormSubmit)}>
             <h1>Editar Livro 📖</h1>
