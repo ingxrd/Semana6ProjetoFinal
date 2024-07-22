@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { entrarGoogle, loginUsuario, resetPass } from "../firebase/auth";
@@ -17,22 +17,21 @@ function Login() {
     
     
     function entrar(data) {
-        // data é um objeto com os dados do formulário
-        loginUsuario(data.email, data.senha).then(() => {
-            toast.success("Bem vindo!")
-            navigate("/livros")
-            navigate("/")
-        }).catch(() => {
-            toast.error("Email ou senha incorretos.")
-        })
+        loginUsuario(data.email, data.senha)
+            .then(() => {
+                toast.success("Bem vindo!");
+                navigate("/livros");
+            })
+            .catch(() => {
+                toast.error("Email ou senha incorretos.");
+            });
     }
 
     function handleEntrarGoogle() {
         entrarGoogle().then(() => {
-            toast.success("Bem vindo!")
+            toast.success("Bem vindo!");
             navigate("/livros");
-
-        })
+        });
     }
 
     return (
@@ -89,3 +88,5 @@ function Login() {
 }
 
 export default Login;
+
+
