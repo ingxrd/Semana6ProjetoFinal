@@ -10,8 +10,6 @@ import { novoLivro } from '../firebase/livros';
 function NovoLivro() {
   const [imgURL, setImgURL] = useState(null);
   const [progresspercent, setProgresspercent] = useState(0);
-
-
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
   const navigate = useNavigate();
 
@@ -43,8 +41,6 @@ function NovoLivro() {
       }
     );
   }
-
-
 
   return (
     <main className="d-flex text-center">

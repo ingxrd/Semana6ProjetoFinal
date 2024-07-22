@@ -5,11 +5,9 @@
     width: 320px;
     margin: 16px auto;
 }
-
 .invalid {
     color: red;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -29,11 +27,6 @@ h1 {
     text-align: center;
 }
 
-
-main {
-    min-height: calc(100vh - 112px);
-}
-
 body{
     box-sizing: border-box;
     width: 100%;
@@ -42,7 +35,6 @@ body{
 form{
     font-family: MontSerrat;
 }
-
 /*Cadastro*/
 .main{
     min-height: calc(100vh - 112px);
@@ -54,14 +46,24 @@ form{
 .btn-area{
     width: 80%;
 }
+.f-area{
+    background-color: #efefef;
+    text-align: center;
+    width: 35%; 
+    padding: 8px;
+    border: 2px solid rgb(170, 160, 160);
+}
 .form-area{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
     background-color: #f0f0f0;
     border: 2px solid rgb(170, 160, 160);
     padding: 8px;
-    width: 25%;
-    
-    
+    width: 35%;  
 }
+
 .but{
     width: 50%;
 }
@@ -79,28 +81,18 @@ form{
 }
 .link-login{
     text-decoration: none;
+    color: black;
+    text-align: center;
 }
-.aval{
-    background-color: transparent;
-    border-color: transparent;
-
-}
-.naval{
-    background-color: transparent;
-    border-color: transparent;
-
+.link-login:hover{
+    letter-spacing: 1px;
 }
 .capa-livro{
     width: 180px;
 }
-.btnnn:hover{
-    background-color: transparent;
-}
-.naval:hover{
-    background-color: transparent;
-    border-color:transparent;
-}
-.aval:hover{
-    background-color: transparent;
-    border-color: transparent;
+.form-container{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
