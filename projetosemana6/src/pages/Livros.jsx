@@ -56,7 +56,7 @@ function Livros() {
           Adicionar Novo Livro
         </Link>
         {livros ? (
-          <Row xs={1} md={2} lg={3} className="g-4">
+          <Row lg={4} className="g-4">
             {livros.map((livro) => (
               <Col key={livro.id}>
                 <Card className="card-livro h-100">
