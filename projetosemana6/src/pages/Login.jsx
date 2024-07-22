@@ -79,7 +79,7 @@ function Login() {
 
                         Entrar com o Google
                     </Button>
-                    <Button className= "btn"variant= "danger" href="/login/esqueci">Esqueci a senha </Button>
+                    <a href="/login/esqueci" className="mt-1 link-login">Esqueci a senha</a>
                     
                 </div>
             </form>
