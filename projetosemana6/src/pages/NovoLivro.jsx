@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '../firebase/config'; // Certifique-se de que o caminho está correto
 import { novoLivro } from '../firebase/livros';
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function NovoLivro() {
   const [imgURL, setImgURL] = useState(null);
   const [progresspercent, setProgresspercent] = useState(0);
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
   const navigate = useNavigate();
+  const usuario = useContext(UsuarioContext);
 
   const handleEnviar = (data) => {
     const file = data.capa[0];
@@ -41,6 +44,10 @@ function NovoLivro() {
       }
     );
   }
+  
+  if (usuario === null) {
+    return <Navigate to="/login" />
+  } 
 
   return (
     <main className="d-flex text-center">
