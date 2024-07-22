@@ -1,17 +1,21 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { entrarGoogle, loginUsuario } from "../firebase/auth";
+import { entrarGoogle, loginUsuario, resetPass } from "../firebase/auth";
 import toast from "react-hot-toast";
+
+
 function Login() {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-
+    
+    
     const navigate = useNavigate();
-
+    
+    
     function entrar(data) {
         // data é um objeto com os dados do formulário
         loginUsuario(data.email, data.senha).then(() => {
@@ -76,6 +80,8 @@ function Login() {
 
                         Entrar com o Google
                     </Button>
+                    <Button className= "btn"variant= "danger" href="/login/esqueci">Esqueci a senha </Button>
+                    
                 </div>
             </form>
         </main>
