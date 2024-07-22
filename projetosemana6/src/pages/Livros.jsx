@@ -53,6 +53,10 @@ function Livros() {
         return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
       }
   }
+    if (usuario === null) {
+      // Navegar para /login
+     return <Navigate to="/login" />;
+  }
 
 
   return (
@@ -67,8 +71,8 @@ function Livros() {
           <Row>
             {livros.map((livro) => {
               return (
-                <Col md={4} className="mb-4" key={livro.id}>
-                  <Card>
+                <Col sm={3} className="mb-5" key={livro.id}>
+                  <Card className="card-livro">
                     <Card.Body>
                       <Card.Title>{livro.titulo}</Card.Title>
                       <Card.Text>Autor: {livro.autor}</Card.Text>

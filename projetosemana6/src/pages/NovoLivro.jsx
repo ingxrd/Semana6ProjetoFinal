@@ -3,6 +3,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { novoLivro } from "../firebase/livros";
 import { Button } from "react-bootstrap";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function NovoLivro(){
     const {
@@ -10,6 +12,8 @@ function NovoLivro(){
         handleSubmit,
         formState: { errors },
       } = useForm();
+      
+      const usuario = useContext(UsuarioContext);
     
       const Navigate = useNavigate();
 
@@ -21,6 +25,10 @@ function NovoLivro(){
           .catch(() => {
             toast.error("Erro ao adicionar Livro!");
           });
+      }
+      
+      if (usuario === null) {
+        return <Navigate to="/login" />;
       }
 
     return(

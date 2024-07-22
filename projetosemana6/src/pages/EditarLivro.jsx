@@ -18,6 +18,7 @@ function EditarLivro() {
   function carregarDados() {
     getLivro(id).then((livro) => {
       if (livro) {
+        reset(livro)
       } else {
         navigate("/livros");
       }
@@ -34,6 +35,13 @@ function EditarLivro() {
       toast.success("Livro atualizado com sucesso");
       navigate("/livros");
     });
+  }
+  useEffect(() => {
+    carregarDados();
+  }, []);
+  
+  if(usuario === null) {
+    return <Navigate to="/login"/>
   }
   
   return(

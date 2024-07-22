@@ -13,6 +13,7 @@ import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
 import Ajuda from "./pages/Ajuda";
 import NotFound from "./pages/NotFound";
+import Reset from "./pages/Reset"
 
 
 
@@ -55,6 +56,7 @@ function App(){
         <Route path="/livros/adicionar" element={<NovoLivro/>}/>
         <Route path="/livros/editar/:id" element={<EditarLivro/>}/>
         <Route path="*" element={<NotFound/>}/>
+        <Route path="/login/esqueci" element={<Reset/>}/>
       </Routes>
       <Footer/>
       <Toaster position="top-center"/>
