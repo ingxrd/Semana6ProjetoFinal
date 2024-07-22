@@ -1,5 +1,5 @@
-import { Card, Container, Badge, Button, Row, Col, CardImg } from "react-bootstrap";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Card, Container, Badge, Button, Row, Col } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { getLivros, deleteLivro } from "../firebase/livros";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
@@ -10,38 +10,27 @@ import {getLivrosUsuario} from "../firebase/livros";
 
 function Livros() {
   const [livros, setLivros] = useState(null);
-  //criando função para carregar dados do banco
   const usuario = useContext(UsuarioContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    carregarDados();
+  }, []);
+
   function carregarDados() {
     getLivrosUsuario(usuario.uid).then((resultados) => {
       setLivros(resultados)
     });
   }
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    carregarDados();
-  }, []);
-
   function excluirLivro(id) {
-    // true -> apagar a tarefa, false -> não fazer nada
-    const deletar = confirm("Tem certeza ?");
+    const deletar = window.confirm("Tem certeza?");
     if (deletar) {
       deleteLivro(id).then(() => {
-        toast.success("Tarefa removida com sucesso");
-        // Trazer a lista de tarefas atualizada
+        toast.success("Livro removido com sucesso");
         carregarDados();
       });
     }
-  }
-
-  useEffect(() => {
-    carregarDados();
-  }, []);
-
-  if (usuario === null) {
-    return <Navigate to="/login" />
   }
 
   function statusLivros(livro) {
@@ -49,15 +38,14 @@ function Livros() {
       return <Badge bg="success">Leitura Concluída</Badge>;
     } else if (livro.dataInicio || livro.andamento) {
       return <Badge bg="dark">Leitura em Andamento</Badge>;
-    } else if (!livro.concluido && !livro.andamento) {
-      return <Badge bg="light" className="text-dark">Leitura Não Iniciada</Badge>;
+    } else {
+      return <Badge bg="light" text="dark">Leitura Não Iniciada</Badge>;
     }
   }
+
   if (usuario === null) {
-    // Navegar para /login
     return <Navigate to="/login" />;
   }
-
 
   return (
     <main>
@@ -68,38 +56,39 @@ function Livros() {
           Adicionar Novo Livro
         </Link>
         {livros ? (
-          <Row>
-            {livros.map((livro) => {
-              return (
-                <Col sm={3} className="mb-5" key={livro.id}>
-                  <Card className="card-livro">
-                    <Card.Body>
-                      <Card.Title>{livro.titulo}</Card.Title>
-                      <img src={livro.capa} className="capa-livro"></img>
-                      <Card.Text>Autor: {livro.autor}</Card.Text>
-                      <Card.Text>Gênero: {livro.genero}</Card.Text>
-                      {livro.dataInicio && (
-                        <Card.Text>
-                          Data de Início: {livro.dataInicio}
-                        </Card.Text>
-                      )}
-                      {livro.dataConclusao && (
-                        <Card.Text>
-                          Data de Conclusão: {livro.dataConclusao}
-                        </Card.Text>
-                      )}
-                      <div className="mb-2">
-                        {statusLivros(livro)}
-                      </div>
+          <Row xs={1} md={2} lg={3} className="g-4">
+            {livros.map((livro) => (
+              <Col key={livro.id}>
+                <Card className="card-livro h-100">
+                  <Card.Body className="d-flex flex-column">
+                    <Card.Title>{livro.titulo}</Card.Title>
+                    <img src={livro.capa} className="capa-livro" alt="Capa do livro" />
+                    <Card.Text>Autor: {livro.autor}</Card.Text>
+                    <Card.Text>Gênero: {livro.genero}</Card.Text>
+                    {livro.descricao && (
+                      <Card.Text>Comentário: {livro.descricao}</Card.Text>
+                    )}
+                    {livro.dataInicio && (
+                      <Card.Text>Data de Início: {livro.dataInicio}</Card.Text>
+                    )}
+                    {livro.dataConclusao && (
+                      <Card.Text>Data de Conclusão: {livro.dataConclusao}</Card.Text>
+                    )}
+                    <div className="mt-auto">
+                      {statusLivros(livro)}
+                    </div>
+                    <div className="mt-2">
                       <Button variant="primary" className="me-2" onClick={() => navigate(`/livros/editar/${livro.id}`)}>
                         Editar
                       </Button>
-                      <Button variant="danger" onClick={() => excluirLivro(livro.id)}>Excluir</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
+                      <Button variant="danger" onClick={() => excluirLivro(livro.id)}>
+                        Excluir
+                      </Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
           </Row>
         ) : (
           <Loader />
