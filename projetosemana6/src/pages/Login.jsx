@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { entrarGoogle, loginUsuario, resetPass } from "../firebase/auth";
 import toast from "react-hot-toast";
+import fundo from "../assets/fundo.jpg";
 
 
 function Login() {
@@ -35,7 +36,7 @@ function Login() {
     }
 
     return (
-        <main className="main d-flex align-items-center">
+        <main className="main d-flex align-items-center" style={{ backgroundImage: `url(${fundo})`, minHeight: '100vh' }}>
             <Container className="form-container ">
             <Form className=" form-area" onSubmit={handleSubmit(entrar)}>
                 <h1>Login</h1>
