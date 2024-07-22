@@ -5,9 +5,10 @@ import { db } from "./config";
 
 export const livrosRef = collection(db, "livros"); 
 
-export async function novoLivro(dados) { 
-    await addDoc(livrosRef, dados);
-
+export async function novoLivro(data) { 
+    await addDoc(livrosRef, data);
+    
+    console.log(data)
 }
 
 export async function getLivros() { 
@@ -42,3 +43,5 @@ export async function deleteLivro(id) {
     const livroDoc = doc(livrosRef, id);
     await updateDoc(livroDoc, data)
   }
+
+  

@@ -1,4 +1,4 @@
-import { Card, Container, Badge, Button, Row, Col } from "react-bootstrap";
+import { Card, Container, Badge, Button, Row, Col, CardImg } from "react-bootstrap";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { getLivros, deleteLivro } from "../firebase/livros";
 import { useState, useEffect } from "react";
@@ -75,6 +75,7 @@ function Livros() {
                   <Card className="card-livro">
                     <Card.Body>
                       <Card.Title>{livro.titulo}</Card.Title>
+                      <CardImg>{livro.capa}</CardImg>
                       <Card.Text>Autor: {livro.autor}</Card.Text>
                       <Card.Text>Gênero: {livro.genero}</Card.Text>
                       {livro.dataInicio && (

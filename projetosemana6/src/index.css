@@ -75,5 +75,7 @@ form{
 .card-livro{
     width:240px;
     flex-wrap: wrap;
-    
+}
+.link-login{
+    text-decoration: none;
 }
