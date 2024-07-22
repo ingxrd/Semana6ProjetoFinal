@@ -28,7 +28,7 @@ function Cadastro() {
     return (
         <main className="main d-flex align-items-center" style={{ backgroundImage: `url(${fundo})`, minHeight: '100vh' }}>
             <Container className="form-container">
-                <Form className="form-area form-section" onSubmit={handleSubmit(cadastrar)}>
+                <Form className="form-section f-area" onSubmit={handleSubmit(cadastrar)}>
                     <h1 className="text-center">Cadastro</h1>
                     <hr />
                     <Form.Group className="mb-3">
