@@ -21,7 +21,7 @@ function EditarLivro() {
   function carregarDados() {
     getLivro(id).then((livro) => {
       if (livro) {
-        reset(livro); // Preenche o formulário com os dados do livro
+        reset(livro);
       } else {
         navigate("/livros");
       }
@@ -48,7 +48,6 @@ function EditarLivro() {
   }
   
   return(
-        
         <main className="d-flex text-center">
           <form className="form-section" onSubmit={handleSubmit(handleFormSubmit)}>
             <h1>Editar Livro 📖</h1>
