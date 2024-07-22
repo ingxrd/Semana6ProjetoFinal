@@ -44,4 +44,13 @@ export async function deleteLivro(id) {
     await updateDoc(livroDoc, data)
   }
 
-  
+  export async function getLivrosUsuario(idUsuario){
+    const filtro = query(livrosRef, where("idUsuario", "==", idUsuario))
+    const snapshot = await getDocs(filtro);
+    const livros = [];
+
+    snapshot.forEach((doc) => {
+      livros.push({...doc.data(), id: doc.id})
+    })
+    return livros;
+  }

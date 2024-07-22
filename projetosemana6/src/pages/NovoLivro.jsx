@@ -36,6 +36,7 @@ function NovoLivro() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImgURL(downloadURL)
           data.capa = downloadURL
+          data.idUsuario = usuario.uid;
           novoLivro(data).then(() => {
             toast.success("Livro Adicionado com sucesso!");
             navigate("/livros");

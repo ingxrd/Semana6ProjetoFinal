@@ -6,14 +6,15 @@ import Loader from "../components/Loader";
 import { useContext } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import toast from "react-hot-toast";
+import {getLivrosUsuario} from "../firebase/livros";
 
 function Livros() {
   const [livros, setLivros] = useState(null);
   //criando função para carregar dados do banco
   const usuario = useContext(UsuarioContext);
   function carregarDados() {
-    getLivros().then((resultados) => {
-      setLivros(resultados);
+    getLivrosUsuario(usuario.uid).then((resultados) => {
+      setLivros(resultados)
     });
   }
 
