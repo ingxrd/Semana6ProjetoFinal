@@ -1,54 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import imagem from '../assets/logo.jpg';
 import './Menu.css';
-import { useContext } from "react";
 import { UsuarioContext } from '../contexts/UsuarioContext';
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../firebase/auth";
-
 
 function Menu() {
   const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
-      
-  function handlelogOut(){
-    logOut().then (()=>{
-        navigate("/login")
-    })
-}
-  
+  function handlelogOut() {
+    logOut().then(() => {
+      navigate("/login");
+    });
+  }
+
   return (
     <header>
-      <Navbar bg="light" variant="light" expand="md">
-        <Container fluid className="header-container">
-          <Navbar.Brand>
-            <Link to="/">
-              <img
-                src={imagem}
-                width="80"
-                height="80"
-                className="d-inline-block align-top logo rounded-circle"
-                alt="Logo"
-                
-              />
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Nav className="botoes">
-              {usuario && <span className=''>Olá, {usuario.displayName}</span>}
-              {!usuario && <Nav.Link as={Link} to="/login">📚 Entrar</Nav.Link>}
-              {!usuario && <Nav.Link as={Link} to="/cadastro">✍🏻 Cadastro</Nav.Link>}
-              {usuario && <Nav.Link as={Link} to="/livros"> 📕 Livros</Nav.Link>}
-              <Nav.Link as={Link} to="/ajuda">❓ Ajuda</Nav.Link>
-              {usuario && <Button variant = "dark" onClick={handlelogOut}>🔚 Sair</Button>}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <div className="navbar">
+        <div className="logo-container">
+          <Link to="/" className="logo-link">
+            <img
+              src={imagem}
+              width="80"
+              height="80"
+              className="logo rounded-circle"
+              alt="Logo"
+            />
+          </Link>
+        </div>
+        <div className="title-container">
+          <h1 className="header-title">Biblioteca Pessoal</h1>
+        </div>
+        <div className="botoes-container">
+          <nav className="botoes">
+            {usuario && <span className=''>Olá, {usuario.displayName}</span>}
+            {!usuario && <Link to="/login" className="nav-link">📚 Entrar</Link>}
+            {!usuario && <Link to="/cadastro" className="nav-link">✍🏻 Cadastro</Link>}
+            {usuario && <Link to="/livros" className="nav-link"> 📕 Livros</Link>}
+            <Link to="/ajuda" className="nav-link">❓ Ajuda</Link>
+            {usuario && <button className="btn-sair" onClick={handlelogOut}>🔚 Sair</button>}
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }

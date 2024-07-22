@@ -1,34 +1,37 @@
-import { Button } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { entrarGoogle, loginUsuario } from "../firebase/auth";
+import { entrarGoogle, loginUsuario, resetPass } from "../firebase/auth";
 import toast from "react-hot-toast";
+
+
 function Login() {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-
+    
+    
     const navigate = useNavigate();
-
+    
+    
     function entrar(data) {
-        // data é um objeto com os dados do formulário
-        loginUsuario(data.email, data.senha).then(() => {
-            toast.success("Bem vindo!")
-            navigate("/livros")
-            navigate("/")
-        }).catch(() => {
-            toast.error("Email ou senha incorretos.")
-        })
+        loginUsuario(data.email, data.senha)
+            .then(() => {
+                toast.success("Bem vindo!");
+                navigate("/livros");
+            })
+            .catch(() => {
+                toast.error("Email ou senha incorretos.");
+            });
     }
 
     function handleEntrarGoogle() {
         entrarGoogle().then(() => {
-            toast.success("Bem vindo!")
+            toast.success("Bem vindo!");
             navigate("/livros");
-
-        })
+        });
     }
 
     return (
@@ -76,6 +79,8 @@ function Login() {
 
                         Entrar com o Google
                     </Button>
+                    <Button className= "btn"variant= "danger" href="/login/esqueci">Esqueci a senha </Button>
+                    
                 </div>
             </form>
         </main>
@@ -83,3 +88,5 @@ function Login() {
 }
 
 export default Login;
+
+

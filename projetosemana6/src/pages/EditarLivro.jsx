@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
-import { useEffect } from 'react';
-import { useContext } from "react";
+import { useEffect, useContext } from 'react';
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { getLivro, updateLivro } from "../firebase/livros";
 import toast from "react-hot-toast";
@@ -11,13 +10,18 @@ function EditarLivro() {
   const { id } = useParams();
   const usuario = useContext(UsuarioContext);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    carregarDados();
+  }, [id]);
   
   function carregarDados() {
     getLivro(id).then((livro) => {
       if (livro) {
+        reset(livro); // Preenche o formulário com os dados do livro
       } else {
         navigate("/livros");
       }
@@ -34,6 +38,13 @@ function EditarLivro() {
       toast.success("Livro atualizado com sucesso");
       navigate("/livros");
     });
+  }
+  useEffect(() => {
+    carregarDados();
+  }, []);
+  
+  if(usuario === null) {
+    return <Navigate to="/login"/>
   }
   
   return(
